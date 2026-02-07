@@ -28,8 +28,8 @@ fi
 git add .
 git commit -m "ran update on $now"
 git push --set-upstream origin "$now"
-gh pr create --fill -B "main"
-gh pr merge --admin --squash --delete-branch
+pr_url=$(gh pr create --fill -B "main")
+gh pr merge "$pr_url" --admin --squash --delete-branch
 git checkout main
 git pull origin main
 git branch -d "$now" 2>/dev/null || true
