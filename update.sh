@@ -36,11 +36,11 @@ for formula in python@3.9 tldr; do
 done
 
 brew upgrade
+brew bundle dump -f
 brew bundle -v
 brew cleanup
 brew doctor -v || true
 mas upgrade
-brew bundle dump -f
 az upgrade --yes
 mackup backup -f
 
