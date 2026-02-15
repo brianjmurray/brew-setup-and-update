@@ -85,6 +85,7 @@ mas "1Password for Safari", id: 1569813296
 mas "BetterSnapTool", id: 417375580
 mas "Bitwarden", id: 1352778147
 mas "ColorStrokes", id: 459413843
+mas "Cult Of The Lamb", id: 1639580858
 mas "Dark Reader for Safari", id: 1438243180
 mas "Disconnect Premium", id: 1333277187
 mas "Final Cut Pro", id: 424389933
@@ -132,6 +133,7 @@ vscode "fabiospampinato.vscode-diff"
 vscode "file-icons.file-icons"
 vscode "github.copilot-chat"
 vscode "github.github-vscode-theme"
+vscode "github.vscode-pull-request-github"
 vscode "grapecity.gc-excelviewer"
 vscode "johnpapa.vscode-peacock"
 vscode "mechatroner.rainbow-csv"
