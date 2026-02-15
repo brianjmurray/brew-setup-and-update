@@ -24,6 +24,12 @@ esac
 # --- Git branching (update mode only) ---
 now=$(date '+%Y%m%d')
 if [[ "$mode" == "update" ]]; then
+  # Verify GitHub CLI auth before doing any work
+  if ! gh auth status &>/dev/null; then
+    echo "Error: Not authenticated to GitHub. Run 'gh auth login' first."
+    exit 1
+  fi
+
   git checkout main
   git pull origin main
 
@@ -79,22 +85,32 @@ fi
 
 # --- Git commit and PR (update mode only) ---
 if [[ "$mode" == "update" ]]; then
-  if git diff --quiet && git diff --cached --quiet; then
+  # Stage and commit if there are uncommitted changes
+  if ! git diff --quiet || ! git diff --cached --quiet; then
+    git add .
+    if git log main.."$now" --oneline | grep -q .; then
+      git commit --amend -m "ran update on $now"
+    else
+      git commit -m "ran update on $now"
+    fi
+  fi
+
+  # Check if the branch has any commits beyond main
+  if ! git log main.."$now" --oneline | grep -q .; then
     echo "No changes to commit."
     git checkout main
-    git branch -d "$now"
+    git branch -d "$now" 2>/dev/null || true
     exit 0
   fi
 
-  git add .
-  if git log main.."$now" --oneline | grep -q .; then
-    git commit --amend -m "ran update on $now"
+  # Push the branch
+  if git ls-remote --heads origin "$now" | grep -q .; then
     git push --force-with-lease origin "$now"
   else
-    git commit -m "ran update on $now"
     git push --set-upstream origin "$now"
   fi
 
+  # Create or find existing PR, then merge
   if ! gh pr view "$now" &>/dev/null; then
     pr_url=$(gh pr create --fill -B "main")
   else
