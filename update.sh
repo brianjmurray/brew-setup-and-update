@@ -11,6 +11,8 @@ usage() {
   exit 1
 }
 
+step() { echo ""; echo "==> $1"; }
+
 if [[ $# -ne 1 ]]; then
   usage
 fi
@@ -22,6 +24,7 @@ case "$1" in
 esac
 
 # --- Verify required tools ---
+step "Verifying required tools"
 for tool in brew git; do
   if ! command -v "$tool" &>/dev/null; then
     echo "Error: '$tool' is required but not installed."
@@ -32,6 +35,7 @@ done
 # --- Git branching (update mode only) ---
 now=$(date '+%Y%m%d')
 if [[ "$mode" == "update" ]]; then
+  step "Preparing git branch"
   # Verify GitHub CLI auth before doing any work
   if ! gh auth status &>/dev/null; then
     echo "Error: Not authenticated to GitHub. Run 'gh auth login' first."
@@ -40,6 +44,12 @@ if [[ "$mode" == "update" ]]; then
 
   git checkout main
   git pull origin main
+  git fetch --prune
+
+  # Clean up local branches already merged into main
+  for branch in $(git branch --merged main | grep -v '^\*\|main'); do
+    git branch -d "$branch" 2>/dev/null || true
+  done
 
   if git show-ref --verify --quiet "refs/heads/$now"; then
     git checkout "$now"
@@ -49,10 +59,13 @@ if [[ "$mode" == "update" ]]; then
 fi
 
 # --- System and package updates ---
+step "Running macOS software update"
 sudo softwareupdate -ia --verbose
+step "Updating Homebrew"
 brew update
 
 # Untap deprecated taps
+step "Checking for deprecated taps"
 deprecated_taps=$(brew tap 2>/dev/null | while read -r t; do
   if brew tap-info "$t" 2>&1 | grep -qi "deprecated"; then
     echo "$t"
@@ -63,28 +76,35 @@ if [[ -n "$deprecated_taps" ]]; then
   echo "$deprecated_taps" | xargs -n1 brew untap
 fi
 
-# Uninstall deprecated formulae and replace where applicable
-for formula in python@3.9 tldr; do
-  if brew list "$formula" &>/dev/null; then
-    echo "Uninstalling deprecated formula: $formula"
-    brew uninstall --ignore-dependencies "$formula"
-  fi
-done
+# Uninstall deprecated formulae
+step "Checking for deprecated formulae"
+while read -r formula; do
+  [[ -n "$formula" ]] || continue
+  echo "Uninstalling deprecated formula: $formula"
+  brew uninstall --ignore-dependencies "$formula"
+done < <(brew info --installed --json=v2 2>/dev/null \
+  | python3 -c "import sys,json;[print(f['full_name']) for f in json.load(sys.stdin).get('formulae',[]) if f.get('deprecated')]")
 
+step "Upgrading Homebrew packages"
 brew upgrade
 
 # Snapshot current state before installing (update mode only)
 if [[ "$mode" == "update" ]]; then
+  step "Snapshotting Brewfile"
   brew bundle dump -f
 fi
 
+step "Installing from Brewfile"
 brew bundle -v
+step "Cleaning up Homebrew"
 brew cleanup
 brew doctor -v || true
+step "Upgrading other package managers"
 if command -v mas &>/dev/null; then mas upgrade || true; fi
 if command -v az &>/dev/null; then az upgrade --yes || true; fi
 
 # --- Mackup ---
+step "Managing application settings via Mackup"
 if ! command -v mackup &>/dev/null; then
   echo "Warning: mackup not found, skipping settings backup/restore."
 elif [[ "$mode" == "init" ]]; then
@@ -95,6 +115,7 @@ fi
 
 # --- Git commit and PR (update mode only) ---
 if [[ "$mode" == "update" ]]; then
+  step "Committing and creating PR"
   # Stage and commit if there are uncommitted changes
   if ! git diff --quiet || ! git diff --cached --quiet; then
     git add .
