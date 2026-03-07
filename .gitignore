@@ -1,5 +1,3 @@
 Brewfile.backup
 Brewfile.lock.json
 .Brewfile.lock.json.icloud
-backup_npmrc
-initial_setup.sh

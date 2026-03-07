@@ -21,6 +21,14 @@ case "$1" in
   *)        usage ;;
 esac
 
+# --- Verify required tools ---
+for tool in brew git; do
+  if ! command -v "$tool" &>/dev/null; then
+    echo "Error: '$tool' is required but not installed."
+    exit 1
+  fi
+done
+
 # --- Git branching (update mode only) ---
 now=$(date '+%Y%m%d')
 if [[ "$mode" == "update" ]]; then
@@ -77,7 +85,9 @@ if command -v mas &>/dev/null; then mas upgrade || true; fi
 if command -v az &>/dev/null; then az upgrade --yes || true; fi
 
 # --- Mackup ---
-if [[ "$mode" == "init" ]]; then
+if ! command -v mackup &>/dev/null; then
+  echo "Warning: mackup not found, skipping settings backup/restore."
+elif [[ "$mode" == "init" ]]; then
   mackup restore
 else
   mackup backup -f
