@@ -41,6 +41,12 @@ Run with `--update` every couple of weeks to keep everything current:
 ./update.sh --update
 ```
 
+Add `--dry-run` to preview what would be executed without making any changes:
+
+```bash
+./update.sh --update --dry-run
+```
+
 ### What it does
 
 1. Checks out `main` and pulls latest changes
@@ -69,6 +75,7 @@ The script is designed to be re-run safely on the same day. If it fails partway 
 - Most update commands are idempotent
 - Commits are amended and force-pushed rather than stacked
 - PR creation is skipped if one already exists for the branch
+- A lock file (`/tmp/update.sh.lock`) prevents concurrent runs
 
 ## Personalizing your fork
 
