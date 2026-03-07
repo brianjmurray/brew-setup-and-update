@@ -73,8 +73,8 @@ fi
 brew bundle -v
 brew cleanup
 brew doctor -v || true
-mas upgrade
-az upgrade --yes
+if command -v mas &>/dev/null; then mas upgrade || true; fi
+if command -v az &>/dev/null; then az upgrade --yes || true; fi
 
 # --- Mackup ---
 if [[ "$mode" == "init" ]]; then
