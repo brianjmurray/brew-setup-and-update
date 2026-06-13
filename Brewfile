@@ -2,128 +2,172 @@ tap "1password/tap"
 tap "anomalyco/tap"
 tap "databricks/tap"
 tap "dbt-labs/dbt"
+tap "facebook/fb"
 tap "hashicorp/tap"
 tap "homebrew/bundle"
 tap "microsoft/git"
 tap "microsoft/mssql-release"
+# To build and run Airflow DAGs locally and interact with the Astronomer API
 brew "astro"
+# Azure Storage data transfer utility
 brew "azcopy"
+# Microsoft Azure CLI 2.0
 brew "azure-cli"
+# Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
+# Tool for emulating mouse and keyboard events
+brew "cliclick"
+# Cross-platform make
 brew "cmake"
-brew "docker-completion"
+# Pack, ship and run any application as a lightweight container
 brew "docker", link: false
+# User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
+# ODBC 3 connectivity for UNIX
 brew "unixodbc"
+# Libraries to talk to Microsoft SQL Server and Sybase databases
 brew "freetds"
+# GitHub command-line tool
 brew "gh"
+# Distributed revision control system
 brew "git"
+# Alternative to top/htop
 brew "glances"
+# Render markdown on the CLI
 brew "glow"
+# Open source programming language to build simple/reliable/efficient software
 brew "go"
+# Improved top (interactive process viewer)
 brew "htop"
+# Network authentication protocol
 brew "krb5"
+# Small memory footprint, flexible web-server
 brew "lighttpd"
+# Keep your Mac's application settings in sync
 brew "mackup"
+# Mac App Store command-line interface
 brew "mas"
+# Run a Kubernetes cluster locally
 brew "minikube"
+# Open-source, cross-platform JavaScript runtime environment
 brew "node"
+# MongoDB Shell to connect, configure, query, and work with your MongoDB database
 brew "mongosh"
+# Prompt theme engine for any shell
 brew "oh-my-posh"
+# Create, run, and share large language models (LLMs)
 brew "ollama"
+# Development kit for the Java programming language
 brew "openjdk"
+# Apache Parquet command-line tools and utilities
 brew "parquet-cli"
+# Execute binaries from Python packages in isolated environments
 brew "pipx"
+# Package compiler and linker metadata toolkit
 brew "pkgconf"
+# Python package management tool
 brew "poetry"
+# Powerful, clean, object-oriented scripting language
+brew "portable-ruby"
+# Command-line shell and scripting language
 brew "powershell", link: false
+# Protocol buffers (Google's data interchange format)
 brew "protobuf"
+# Python version management
 brew "pyenv"
+# Pyenv plugin to manage virtualenv
 brew "pyenv-virtualenv"
+# Interpreted, interactive, object-oriented programming language
 brew "python@3.10"
+# Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
+# QR Code generation
 brew "qrencode"
+# Perl-powered file rename script with many helpful built-ins
 brew "rename"
+# Powerful, clean, object-oriented scripting language
+brew "ruby", link: false
+# Safe, concurrent, practical language
 brew "rust"
+# JVM-based programming language
 brew "scala"
+# Web crawling & scraping framework
 brew "scrapy"
+# Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
+# Cross-shell prompt for astronauts
 brew "starship"
+# Very fast implementation of tldr in Rust
 brew "tealdeer"
+# User interface to the TELNET protocol
 brew "telnet"
-brew "terraformer"
+# Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
+# ASGI web server
 brew "uvicorn"
+# Internet file retriever
 brew "wget"
+# JavaScript package manager
 brew "yarn"
-brew "anomalyco/tap/opencode"
-brew "databricks/tap/databricks"
-brew "hashicorp/tap/terraform"
+# The AI coding agent built for the terminal.
+brew "anomalyco/tap/opencode", trusted: true
+# Command-line interface for the Databricks platform
+brew "databricks/tap/databricks", trusted: true
+# Terraform
+brew "hashicorp/tap/terraform", trusted: true
+# Password manager that keeps all passwords secure behind one password
 cask "1password"
+# Command-line interface for 1Password
 cask "1password-cli"
+# Chromium based browser
 cask "arc"
+# 3D model slicing software for 3D printers, maintained by Bambu Lab
 cask "bambu-studio"
+# Guitar Hero clone
 cask "clone-hero"
+# OpenAI's coding agent that runs in your terminal
+cask "codex"
+# OpenAI's Codex desktop app for managing coding agents
+cask "codex-app"
+# Brings the power of Copilot coding agent directly to your terminal
 cask "copilot-cli"
+# Write, edit, and chat about your code with AI
 cask "cursor"
+# Universal database tool and SQL client
 cask "dbeaver-community"
+# Voice and text chat software
 cask "discord"
+# App to build and share containerised applications and microservices
 cask "docker-desktop"
+# Developer platform
 cask "dotnet-sdk"
+# Assign keys, and then decorate and label them
 cask "elgato-stream-deck"
+# Provides updates to various Microsoft products
 cask "microsoft-auto-update"
+# Meet, chat, call, and collaborate in just one place
 cask "microsoft-teams"
+# Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
-cask "open-in-code"
+# Command-line shell and scripting language
 cask "powershell"
+# IDE for Python programming - Community Edition
 cask "pycharm-ce"
+# Control your tools with a few keystrokes
 cask "raycast"
+# Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
+# Video game digital distribution service
 cask "steam"
+# Open-source code editor
 cask "visual-studio-code"
+# Multimedia player
 cask "vlc"
+# Rust-based terminal
 cask "warp"
-mas "1Blocker", id: 1365531024
-mas "1Password for Safari", id: 1569813296
-mas "BetterSnapTool", id: 417375580
-mas "ColorStrokes", id: 459413843
-mas "Cult Of The Lamb", id: 1639580858
-mas "Dark Reader for Safari", id: 1438243180
-mas "Disconnect Premium", id: 1333277187
-mas "Final Cut Pro", id: 424389933
-mas "Focus 2", id: 740472063
-mas "GarageBand", id: 682658836
-mas "Hush", id: 1544743900
-mas "iMovie", id: 408981434
-mas "Intensify", id: 716854513
-mas "Ivory", id: 6444602274
-mas "Keynote", id: 409183694
-mas "KyPass", id: 555293879
-mas "Logic Pro", id: 634148309
-mas "Microsoft Excel", id: 462058435
-mas "Microsoft OneNote", id: 784801555
-mas "Microsoft Outlook", id: 985367838
-mas "Microsoft PowerPoint", id: 462062816
-mas "Microsoft Word", id: 462054704
-mas "Mobility for Jira", id: 898500641
-mas "NewsGuard", id: 1438657064
-mas "Noiseless", id: 969978718
-mas "Numbers", id: 409203825
-mas "OneDrive", id: 823766827
-mas "Pages", id: 409201541
-mas "PayPal Honey", id: 1472777122
-mas "Privacy Pro", id: 1051960818
-mas "Snapheal", id: 480623975
-mas "Snapselect", id: 935700987
-mas "Spark", id: 1176895641
 mas "Super Agent", id: 1568262835
-mas "Swift Playground", id: 1496833156
-mas "The Camelizer", id: 1532579087
-mas "Tonality", id: 892581529
-mas "VisualXML", id: 617516344
-mas "Windows App", id: 1295203466
-mas "Xcode", id: 497799835
 vscode "amykyta3.systemrdl"
 vscode "beardedbear.beardedicons"
 vscode "catppuccin.catppuccin-vsc-icons"
@@ -134,12 +178,12 @@ vscode "eamodio.gitlens"
 vscode "emmanuelbeziat.vscode-great-icons"
 vscode "fabiospampinato.vscode-diff"
 vscode "file-icons.file-icons"
-vscode "github.copilot-chat"
 vscode "github.github-vscode-theme"
 vscode "github.vscode-github-actions"
 vscode "github.vscode-pull-request-github"
 vscode "grapecity.gc-excelviewer"
 vscode "johnpapa.vscode-peacock"
+vscode "llvm-vs-code-extensions.lldb-dap"
 vscode "mechatroner.rainbow-csv"
 vscode "meezilla.json"
 vscode "mhutchie.git-graph"
@@ -187,7 +231,10 @@ vscode "pkief.material-icon-theme"
 vscode "rangav.vscode-thunder-client"
 vscode "redhat.vscode-yaml"
 vscode "searking.preview-vscode"
+vscode "swiftlang.swift-vscode"
 vscode "teamsdevapp.vscode-ai-foundry"
 vscode "tonybaloney.vscode-pets"
 vscode "vscode-icons-team.vscode-icons"
 uv "crewai"
+npm "github"
+npm "surge"
