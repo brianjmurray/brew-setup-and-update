@@ -7,6 +7,7 @@ tap "hashicorp/tap"
 tap "homebrew/bundle"
 tap "microsoft/git"
 tap "microsoft/mssql-release"
+tap "omnigent-ai/tap"
 # To build and run Airflow DAGs locally and interact with the Astronomer API
 brew "astro"
 # Azure Storage data transfer utility
@@ -22,7 +23,11 @@ brew "cliclick"
 # Cross-platform make
 brew "cmake"
 # Pack, ship and run any application as a lightweight container
-brew "docker", link: false
+brew "docker"
+# Audio codec
+brew "opus"
+# Play, record, convert, and stream select audio and video codecs
+brew "ffmpeg"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
 # ODBC 3 connectivity for UNIX
@@ -43,6 +48,8 @@ brew "go"
 brew "htop"
 # Network authentication protocol
 brew "krb5"
+# TIFF library and utilities
+brew "libtiff"
 # Small memory footprint, flexible web-server
 brew "lighttpd"
 # Keep your Mac's application settings in sync
@@ -117,6 +124,8 @@ brew "anomalyco/tap/opencode", trusted: true
 brew "databricks/tap/databricks", trusted: true
 # Terraform
 brew "hashicorp/tap/terraform", trusted: true
+# Meta-harness for AI agents
+brew "omnigent-ai/tap/omnigent", trusted: true
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Command-line interface for 1Password
@@ -129,8 +138,8 @@ cask "bambu-studio"
 cask "clone-hero"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
-# OpenAI's Codex desktop app for managing coding agents
-cask "codex-app"
+# OpenAI's official ChatGPT desktop app
+cask "chatgpt"
 # Brings the power of Copilot coding agent directly to your terminal
 cask "copilot-cli"
 # Write, edit, and chat about your code with AI
@@ -145,6 +154,8 @@ cask "docker-desktop"
 cask "dotnet-sdk"
 # Assign keys, and then decorate and label them
 cask "elgato-stream-deck"
+# Discover, download, and run local LLMs
+cask "lm-studio"
 # Provides updates to various Microsoft products
 cask "microsoft-auto-update"
 # Meet, chat, call, and collaborate in just one place
@@ -167,7 +178,6 @@ cask "visual-studio-code"
 cask "vlc"
 # Rust-based terminal
 cask "warp"
-mas "Super Agent", id: 1568262835
 vscode "amykyta3.systemrdl"
 vscode "beardedbear.beardedicons"
 vscode "catppuccin.catppuccin-vsc-icons"
@@ -235,6 +245,5 @@ vscode "swiftlang.swift-vscode"
 vscode "teamsdevapp.vscode-ai-foundry"
 vscode "tonybaloney.vscode-pets"
 vscode "vscode-icons-team.vscode-icons"
-uv "crewai"
 npm "github"
 npm "surge"
