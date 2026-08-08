@@ -95,7 +95,7 @@ brew "qrencode"
 # Perl-powered file rename script with many helpful built-ins
 brew "rename"
 # Powerful, clean, object-oriented scripting language
-brew "ruby", link: false
+brew "ruby"
 # Safe, concurrent, practical language
 brew "rust"
 # JVM-based programming language
@@ -116,6 +116,8 @@ brew "uv"
 brew "uvicorn"
 # Internet file retriever
 brew "wget"
+# Generate your Xcode project from a spec file and your folder structure
+brew "xcodegen"
 # JavaScript package manager
 brew "yarn"
 # The AI coding agent built for the terminal.
@@ -138,8 +140,8 @@ cask "bambu-studio"
 cask "clone-hero"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
-# OpenAI's official ChatGPT desktop app
-cask "chatgpt"
+# OpenAI's Codex desktop app for managing coding agents
+cask "codex-app"
 # Brings the power of Copilot coding agent directly to your terminal
 cask "copilot-cli"
 # Write, edit, and chat about your code with AI
@@ -162,7 +164,6 @@ cask "microsoft-auto-update"
 cask "microsoft-teams"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
-# Command-line shell and scripting language
 cask "powershell"
 # IDE for Python programming - Community Edition
 cask "pycharm-ce"
@@ -233,6 +234,7 @@ vscode "ms-toolsai.vscode-jupyter-cell-tags"
 vscode "ms-toolsai.vscode-jupyter-slideshow"
 vscode "ms-vscode-remote.remote-containers"
 vscode "ms-vscode.live-server"
+vscode "ms-vscode.makefile-tools"
 vscode "ms-vscode.powershell"
 vscode "ms-vscode.vscode-node-azure-pack"
 vscode "ms-windows-ai-studio.windows-ai-studio"
@@ -245,5 +247,4 @@ vscode "swiftlang.swift-vscode"
 vscode "teamsdevapp.vscode-ai-foundry"
 vscode "tonybaloney.vscode-pets"
 vscode "vscode-icons-team.vscode-icons"
-npm "github"
-npm "surge"
+uv "omnigent[copilot]"
